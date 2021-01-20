@@ -61,8 +61,30 @@ public class BinaryTree {
         return root;
     }
 
-    public TreeNode createTree(Integer[] preOrderData, Integer[] inOrderData) {
-        return null;
+    public TreeNode createTreeByPreOrder(Integer[] preOrderData) {
+        if (null == preOrderData || preOrderData.length == 0) {
+            return null;
+        }
+        Queue<String> queue = new LinkedBlockingQueue<>();
+        for (Integer data : preOrderData) {
+            queue.add(null == data ? "null" : data.toString());
+        }
+        TreeNode root = createTreeNodeByPreOrder(queue);
+        return root;
+    }
+
+    private TreeNode createTreeNodeByPreOrder(Queue<String> data) {
+        if (data == null || data.isEmpty()) {
+            return null;
+        }
+        String str = data.poll();
+        if ("null".equals(str)) {
+            return null;
+        }
+        TreeNode node = new TreeNode().setData(Integer.valueOf(str));
+        node.setLeftNode(createTreeNodeByPreOrder(data));
+        node.setRightNode(createTreeNodeByPreOrder(data));
+        return node;
     }
 
     /**
@@ -184,14 +206,32 @@ public class BinaryTree {
     }
 
     /**
-     * 非递归后续遍历树
+     * 非递归后续遍历树，双栈实现
      *
      * @param root
      */
     public void postOrderUnRecursionTravelTree(TreeNode root) {
-        if (root == null) {
+        if (null == root) {
             return;
         }
 
+        Stack<TreeNode> stack = new Stack<>();
+        Stack<TreeNode> stack2 = new Stack<>();
+        stack.push(root);
+        while (!stack.empty()) {
+            TreeNode node = stack.pop();
+            stack2.push(node);
+            if (node.getLeftNode() != null) {
+                stack.push(node.getLeftNode());
+            }
+            if (node.getRightNode() != null) {
+                stack.push(node.getRightNode());
+            }
+        }
+
+        while (!stack2.empty()) {
+            TreeNode node = stack2.pop();
+            System.out.print(node.getData() + " ");
+        }
     }
 }
