@@ -72,4 +72,139 @@ public class LinkedList {
         System.out.println();
     }
 
+
+    public boolean cycleCheck(Node head) {
+        if (null == head) {
+            return false;
+        }
+        Node fast = head;
+        Node slow = head;
+        while (fast != null) {
+            slow = slow.getNextNode();
+            fast = fast.getNextNode();
+            if (fast == null) {
+                return false;
+            } else {
+                fast = fast.getNextNode();
+            }
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public Node sortedListMerge(Node head1, Node head2) {
+
+        Node head = new Node();
+        Node p = head;
+        Node node1 = head1.getNextNode();
+        Node node2 = head2.getNextNode();
+
+        while (node1 != null && node2 != null) {
+
+            if (Integer.parseInt(node1.getData()) < Integer.parseInt(node2.getData())) {
+                p.setNextNode(node1);
+                p = node1;
+                node1 = node1.getNextNode();
+                p.setNextNode(null);
+            } else {
+                p.setNextNode(node2);
+                p = node2;
+                node2 = node2.getNextNode();
+                p.setNextNode(null);
+            }
+        }
+        if (node1 == null) {
+            p.setNextNode(node2);
+        }
+        if (node2 == null) {
+            p.setNextNode(node1);
+        }
+        return head1;
+    }
+
+    /**
+     * 删除倒数第N个节点
+     *
+     * @param head
+     * @param n
+     *
+     * @return
+     */
+    public Node deleteNode(Node head, int n) {
+        if (null == head || n <= 0) {
+            return head;
+        }
+        Node p = head;
+        for (int i = 0; i < n; i++) {
+            if (p == null) {
+                return head;
+            }
+            p = p.getNextNode();
+        }
+        Node q = head;
+        while (p.getNextNode() != null) {
+            q = q.getNextNode();
+            p = p.getNextNode();
+        }
+        q.setNextNode(q.getNextNode().getNextNode());
+        return head;
+    }
+
+    public Node getMiddleNode(Node head) {
+        if (null == head) {
+            return head;
+        }
+        Node fast = head;
+        Node slow = head;
+        while (fast != null) {
+            fast = fast.getNextNode();
+            if (null == fast) {
+                return slow;
+            }
+            fast = fast.getNextNode();
+            slow = slow.getNextNode();
+        }
+        return slow;
+    }
+
+    public Boolean isCrossOfTwoList(Node head1, Node head2) {
+        if (null == head1 || null == head2) {
+            return false;
+        }
+        int length1 = 0;
+        int length2 = 0;
+        Node p = head1;
+        while (p != null) {
+            p = p.getNextNode();
+            length1++;
+        }
+        p = head2;
+        while (p != null) {
+            p = p.getNextNode();
+            length2++;
+        }
+
+        p = head1;
+        Node q = head2;
+        if (length1 > length2) {
+            for (int i = 0; i < length1 - length2; i++) {
+                p = p.getNextNode();
+            }
+        } else {
+            for (int i = 0; i < length2 - length1; i++) {
+                q = q.getNextNode();
+            }
+        }
+        while (p != null && q != null) {
+            if (p == q) {
+                return true;
+            }
+            p = p.getNextNode();
+            q = q.getNextNode();
+        }
+        return false;
+    }
 }
