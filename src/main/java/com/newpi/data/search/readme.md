@@ -17,3 +17,9 @@
 6. 查找最后一个小于等于给定值的元素
 
 7. 如果有序数组是一个循环有序数组，比如4，5，6，1，2，3。针对这种情况，如何实现一个求“值等于给定值”的二分查找算法呢？
+   
+   思路：通过mid，low和high之间数据的大小关系，将有序数组划分为有序区间和循环有序数组，根据K值大小和mid,low,high之间值的大小关系确定向前还是向后查找
+   
+   如果：
+   + data[mid] > data[high]: data[low]~data[mid]区间有序，k < data[mid] && k >= data[low],向前查找，否则向后查找
+   + data[mid] < data[high]：data[mid]~data[high]区间有序， k > data[mid] && k <= data[high],向后查找，否则向前查找
