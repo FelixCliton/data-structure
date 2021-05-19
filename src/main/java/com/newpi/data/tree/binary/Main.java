@@ -15,13 +15,22 @@ public class Main {
     public static void main(String[] args) {
 
         BinaryTree binaryTree = new BinaryTree();
-//        TreeNode root = binaryTree.createTree(levelTravelTreeData);
-        TreeNode root = binaryTree.createTreeByPreOrder(preOrderTravelTreeData);
+        TreeNode root = binaryTree.createTree(levelTravelTreeData);
+//        TreeNode root = binaryTree.createTreeByPreOrder(preOrderTravelTreeData);
         binaryTree.levelTravelTree(root);
+        System.out.println("===================");
+        BinaryTree2.levelTravelTree(root);
+
         binaryTree.preOrderTravelTree(root);
         System.out.println();
+        BinaryTree2.preOrderUnRecursionTravelTree(root);
+
         binaryTree.inOrderTravelTree(root);
         System.out.println();
+
+        BinaryTree2.inOrderUnRecursionTravelTree(root);
+        System.out.println();
+
         binaryTree.postOrderTravelTree(root);
         System.out.println();
         binaryTree.preOrderUnRecursionTravelTree(root);

@@ -63,5 +63,31 @@ public class Heap {
         System.out.println();
     }
 
+    public static void heapify(int[] nums) {
+        if (nums == null) {
+            return;
+        }
+        heapAdjust(nums, 0, nums.length);
+    }
+
+    public static void heapAdjust(int[] nums, int rootIndex, int heapSize) {
+
+        int leftChildIndex = 2 * rootIndex + 1 > heapSize ? 2 * rootIndex + 1 : -1;
+        int rightChildIndex = 2 * rootIndex + 2 > heapSize ? 2 * rootIndex + 2 : -1;
+        int largestIndex = rootIndex;
+        if (leftChildIndex != -1 && nums[leftChildIndex] > nums[largestIndex]) {
+            largestIndex = leftChildIndex;
+        }
+        if (rightChildIndex != -1 && nums[rightChildIndex] > nums[largestIndex]) {
+            largestIndex = rightChildIndex;
+        }
+
+        if (rootIndex != largestIndex) {
+            int temp = nums[largestIndex];
+            nums[largestIndex] = nums[rootIndex];
+            nums[rootIndex] = temp;
+            heapAdjust(nums, largestIndex, heapSize);
+        }
+    }
 
 }

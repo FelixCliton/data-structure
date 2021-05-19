@@ -193,7 +193,7 @@ public class MySort {
         quickSort(Arrays.copyOf(nums, nums.length));
 
         System.out.println(findKthSmallElement(nums, 3));
-        
+
         System.out.println(findKthSmallElement(nums, 2));
     }
 }
