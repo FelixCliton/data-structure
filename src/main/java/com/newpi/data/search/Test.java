@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 public class Test {
 
     private Integer[] data = new Integer[]{1,2,3,3,3,4,5,7,8,8,9,10,12,12,16};
+    private int[] nums = new int[]{1,2,3,3,3,4,5,7,8,8,9,10,12,12,16};
 
     @org.junit.Test
     public void testSqrt(){
@@ -23,21 +24,27 @@ public class Test {
 
     @org.junit.Test
     public void testFindFirstEqualValue(){
-        System.out.println(BinarySearch.findFirstEqualValue(data,3));
-        System.out.println(BinarySearch.findFirstEqualValue(data,6));
+        System.out.println(BinarySearch2.findFirstEqualValue(nums,3));
+        System.out.println(BinarySearch2.findFirstEqualValue(nums,6));
+        System.out.println(BinarySearch2.findFirstEqualValue(nums,8));
+        System.out.println(BinarySearch2.findFirstEqualValue(nums,12));
+        System.out.println(BinarySearch2.findFirstEqualValue(nums,16));
     }
 
     @org.junit.Test
     public void testFindLastEqualValue(){
-        System.out.println(BinarySearch.findLastEqualValue(data,3));
-        System.out.println(BinarySearch.findLastEqualValue(data,6));
+        System.out.println(BinarySearch2.findLastEqualValue(nums,3));
+        System.out.println(BinarySearch2.findLastEqualValue(nums,6));
+        System.out.println(BinarySearch2.findLastEqualValue(nums,8));
+        System.out.println(BinarySearch2.findLastEqualValue(nums,12));
+        System.out.println(BinarySearch2.findLastEqualValue(nums,16));
     }
 
     @org.junit.Test
     public void findFirstEqualOrBiggerValue(){
-        System.out.println(BinarySearch.findFirstEqualOrBiggerValue(data,3));
-        System.out.println(BinarySearch.findFirstEqualOrBiggerValue(data,6));
-        System.out.println(BinarySearch.findFirstEqualOrBiggerValue(data,11));
+        System.out.println(BinarySearch2.findFirstBiggerOrEqualValue(nums,3));
+        System.out.println(BinarySearch2.findFirstBiggerOrEqualValue(nums,6));
+        System.out.println(BinarySearch2.findFirstBiggerOrEqualValue(nums,11));
     }
 
     @org.junit.Test
