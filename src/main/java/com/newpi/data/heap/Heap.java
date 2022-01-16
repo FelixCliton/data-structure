@@ -9,7 +9,7 @@ package com.newpi.data.heap;
 public class Heap {
 
 
-    public static void buildHeap(Integer[] data) {
+    public static void buildHeap(int[] data) {
         for (int i = data.length / 2; i >= 0; i--) {
             heapAdjust(data, i, data.length);
         }
@@ -26,7 +26,7 @@ public class Heap {
      *
      * @param nums
      */
-    public static void heapSort(Integer[] nums) {
+    public static void heapSort(int[] nums) {
 
         buildHeap(nums);
         for (int j = nums.length - 1; j >= 0; j--) {
@@ -37,9 +37,9 @@ public class Heap {
         }
     }
 
-    public static void heapAdjust(Integer[] nums, int rootIdx, int len) {
-        int leftChildIdx = 2 * rootIdx < len ? 2 * rootIdx : -1;
-        int rightChileIdx = 2 * rootIdx + 1 < len ? 2 * rootIdx + 1 : -1;
+    public static void heapAdjust(int[] nums, int rootIdx, int len) {
+        int leftChildIdx = 2 * rootIdx+1 < len ? 2 * rootIdx+1 : -1;
+        int rightChileIdx = 2 * rootIdx + 2 < len ? 2 * rootIdx + 2 : -1;
         int largestIdx = rootIdx;
         if (leftChildIdx != -1 && nums[largestIdx] < nums[leftChildIdx]) {
             largestIdx = leftChildIdx;
@@ -56,12 +56,16 @@ public class Heap {
     }
 
 
-    public static void visit(Integer[] data) {
+    public static void visit(int[] data) {
         for (Integer num : data) {
             System.out.print(num + " ");
         }
         System.out.println();
     }
 
-
+    public static void main(String[] args) {
+        int[] nums = new int[]{3, 7, 8, 1, 10, 3, 4, 7, 5, 2, 6};
+        heapSort(nums);
+        visit(nums);
+    }
 }

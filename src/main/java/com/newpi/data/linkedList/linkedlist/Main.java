@@ -15,13 +15,64 @@ public class Main {
         String[] data = new String[]{"A", "B", "C", "D", "E", "F", "G"};
         LinkedList linkedList  = new LinkedList();
         Node head = linkedList.createLinkedList(data);
-        linkedList.visit(head);
-        head = linkedList.reverse(head);
-        linkedList.visit(head);
-        head = linkedList.reverse(head,1);
-        linkedList.visit(head);
-        head = linkedList.reverse(head,2);
-        linkedList.visit(head);
+        head = reverse2(head.getNextNode());
+        visit(head);
+//        head = linkedList.reverse(head);
+//        linkedList.visit(head);
+//        head = linkedList.reverse(head,1);
+//        linkedList.visit(head);
+//        head = linkedList.reverse(head,2);
+//        linkedList.visit(head);
+    }
+    private static void visit(Node head) {
+        Node node = head;
+        while (null != node) {
+            System.out.print(node.getData() + " ");
+            node = node.getNextNode();
+        }
+        System.out.println();
+    }
+    private static Node reverse(Node head){
+        if(null==head){
+            return head;
+        }
+        Node cur = head;
+        while (cur!=null){
+            Node next = cur.getNextNode();
+            cur.setNextNode(next.getNextNode());
+            next.setNextNode(head);
+            head = next;
+        }
+        return head;
+    }
+
+
+    private static Node reverse2(Node head){
+        if(null==head)
+            return null;
+        Node pre = null;
+        Node next = null;
+        while(head!=null){
+            next = head.getNextNode();
+            head.setNextNode(pre);
+            pre = head;
+            head = next;
+        }
+        return pre;
+    }
+
+    private static Node reverse3(Node head){
+        Node pre = new Node();
+        pre.setNextNode(head);
+        Node cur = head;
+        Node  next = cur.getNextNode();
+        while (next!=null){
+            cur.setNextNode(next.getNextNode());
+            next.setNextNode(pre.getNextNode());
+            pre.setNextNode(next) ;
+            next = cur.getNextNode();
+        }
+        return pre.getNextNode();
     }
 
 }

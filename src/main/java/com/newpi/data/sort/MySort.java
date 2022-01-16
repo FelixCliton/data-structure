@@ -141,14 +141,14 @@ public class MySort {
         int j = right;
 
         while (i < j) {
-            while (i < j && nums[j] > pivot) {
+            while (i < j && nums[j] >= pivot) {
                 j--;
             }
             if (i < j) {
                 nums[i++] = nums[j];
             }
 
-            while (i < j && nums[i] < pivot) {
+            while (i < j && nums[i] <= pivot) {
                 i++;
             }
             if (i < j) {
@@ -181,19 +181,20 @@ public class MySort {
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{5, 3, 4, 2, 1};
-        bubbleSort(Arrays.copyOf(nums, nums.length));
-
-        selectSort(Arrays.copyOf(nums, nums.length));
-
-        insertSort(Arrays.copyOf(nums, nums.length));
-
-        mergeSort(Arrays.copyOf(nums, nums.length));
+//        int[] nums = new int[]{5, 3, 4, 2, 1};
+        int[] nums = new int[]{2, 4, 6, 1, 0, 6, 5, 2, 0, 10};
+//        bubbleSort(Arrays.copyOf(nums, nums.length));
+//
+//        selectSort(Arrays.copyOf(nums, nums.length));
+//
+//        insertSort(Arrays.copyOf(nums, nums.length));
+//
+//        mergeSort(Arrays.copyOf(nums, nums.length));
 
         quickSort(Arrays.copyOf(nums, nums.length));
 
-        System.out.println(findKthSmallElement(nums, 3));
-        
-        System.out.println(findKthSmallElement(nums, 2));
+//        System.out.println(findKthSmallElement(nums, 3));
+//
+//        System.out.println(findKthSmallElement(nums, 2));
     }
 }

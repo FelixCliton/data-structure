@@ -43,8 +43,9 @@ public class Test {
     @org.junit.Test
     public void testQuickSort() {
 
-        Sort.quickSort(data);
-        Sort.visit(data);
+//        Sort.quickSort(data);
+        Sort.quickSort(new Integer[]{-1,0,1,2,-1,-4});
+//        Sort.visit(data);
     }
 
     @org.junit.Test
